@@ -10,6 +10,7 @@ function Component1() {
 
   const onSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault()
+    window.fibonacci(state.value)
   }
 
   const onChange = (e: { target: { value: string } }) => {
