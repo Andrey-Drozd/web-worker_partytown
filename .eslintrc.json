@@ -108,7 +108,8 @@
   ],
   "settings": {
     "import/core-modules": [
-      "$components"
+      "$components",
+      "$utils"
     ]
   }
 }

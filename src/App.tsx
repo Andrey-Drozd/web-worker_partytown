@@ -1,12 +1,12 @@
 import React from 'react'
 
 import { Component1 } from '$components/Component1'
-import { PartytownUtil } from '$components/Utils/PartytownUtil'
+import { Partytown } from '$utils/Partytown'
 
 function App() {
   return (
     <>
-      <PartytownUtil />
+      <Partytown />
       <Component1 />
     </>
   )

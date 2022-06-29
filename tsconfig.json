@@ -32,7 +32,8 @@
     "strict": true,
     "target": "ES2015",
     "paths": {
-      "$components/*": ["src/components/*"]
+      "$components/*": ["src/components/*"],
+      "$utils/*": ["src/utils/*"]
     }
   }
 }
