@@ -1,4 +1,4 @@
-function addDataToStorage(name, data) {
+function addDataToLocalStorage(name, data) {
   localStorage.setItem(name, data)
 }
 
@@ -11,10 +11,10 @@ function fibonacci(n) {
   console.log('processing')
 
   const data = fibonacciHandler(n)
-
   console.log('result: ', data)
 
-  addDataToStorage('fibonacci', data)
+  addDataToLocalStorage('fibonacci', data)
+  window.dispatchEvent(new Event('storage'))
 }
 
 window.fibonacci = fibonacci

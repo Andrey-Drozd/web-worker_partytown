@@ -2,14 +2,27 @@ import './Component1.scss'
 
 import React, { useEffect, useState } from 'react'
 
+interface IState {
+  result: string
+  value: number
+}
+
 function Component1() {
-  const [state, setState] = useState({
+  const [state, setState] = useState<IState>({
     result: '--',
     value: 0
   })
 
   const onSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault()
+
+    setState((prevState) => {
+      return {
+        ...prevState,
+        result: 'processing'
+      }
+    })
+
     window.fibonacci(state.value)
   }
 
@@ -22,10 +35,21 @@ function Component1() {
     })
   }
 
-  useEffect(() => {
-    window.addEventListener('storage', (e) => console.log(e))
+  const storageHandler = () => {
+    const currentValue = localStorage.getItem('fibonacci')
 
-    return window.removeEventListener('storage', (e) => console.log(e))
+    setState((prevState) => {
+      return {
+        ...prevState,
+        result: currentValue || '--'
+      }
+    })
+  }
+
+  useEffect(() => {
+    window.addEventListener('storage', storageHandler)
+
+    return () => window.removeEventListener('storage', storageHandler)
   }, [])
 
   return (
