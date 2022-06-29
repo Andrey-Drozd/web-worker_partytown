@@ -1,10 +1,20 @@
-function fibonacci(n) {
+function addDataToStorage(name, data) {
+  localStorage.setItem(name, data)
+}
+
+function fibonacciHandler(n) {
   if (n < 2) return n
+  return fibonacciHandler(n - 1) + fibonacciHandler(n - 2)
+}
 
-  // eslint-disable-next-line no-console
-  console.log('fibonacci: ', fibonacci(n - 1) + fibonacci(n - 2))
+function fibonacci(n) {
+  console.log('processing')
 
-  return fibonacci(n - 1) + fibonacci(n - 2)
+  const data = fibonacciHandler(n)
+
+  console.log('result: ', data)
+
+  addDataToStorage('fibonacci', data)
 }
 
 window.fibonacci = fibonacci

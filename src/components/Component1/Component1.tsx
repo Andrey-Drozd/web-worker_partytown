@@ -1,6 +1,6 @@
 import './Component1.scss'
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 function Component1() {
   const [state, setState] = useState({
@@ -21,6 +21,12 @@ function Component1() {
       }
     })
   }
+
+  useEffect(() => {
+    window.addEventListener('storage', (e) => console.log(e))
+
+    return window.removeEventListener('storage', (e) => console.log(e))
+  }, [])
 
   return (
     <form onSubmit={onSubmit} id="form">
