@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 const path = require('path')
+const partytown = require('@builder.io/partytown/utils')
 
 module.exports = ({ isDev, isBundleAnalyzer }) => {
   const plugins = []
@@ -18,7 +19,16 @@ module.exports = ({ isDev, isBundleAnalyzer }) => {
 
     // копируем файлы в сборку
     new CopyPlugin({
-      patterns: [{ from: 'src/scripts', to: path.join('./', 'scripts') }]
+      patterns: [
+        {
+          from: 'src/scripts',
+          to: path.join('./', 'scripts')
+        },
+        {
+          from: partytown.libDirPath(),
+          to: path.join('./', '~partytown')
+        }
+      ]
     })
   ]
 

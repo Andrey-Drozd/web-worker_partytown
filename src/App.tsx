@@ -1,9 +1,15 @@
 import React from 'react'
 
 import { Component1 } from '$components/Component1'
+import { PartytownUtil } from '$components/Utils/PartytownUtil'
 
 function App() {
-  return <Component1 />
+  return (
+    <>
+      <PartytownUtil />
+      <Component1 />
+    </>
+  )
 }
 
 export { App }
